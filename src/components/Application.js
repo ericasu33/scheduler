@@ -5,7 +5,7 @@ import "components/Application.scss";
 
 import DayList from "components/DayList"
 import Appointment from "components/Appointment"
-import { getAppointmentsForDay, getInterview } from "../helpers/selectors"
+import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "../helpers/selectors"
 
 
 export default function Application() {
@@ -41,6 +41,28 @@ export default function Application() {
   
   const dailyAppointments = getAppointmentsForDay(state, state.day);
 
+  const dailyInterviewers = getInterviewersForDay(state, state.day)
+
+  const bookInterview = (id, interview) => {
+    const appointment = {
+      ...state.appointments[id],
+      interview: {...interview}
+    }
+
+    console.log("THIS IS INTEVIEW", interview)
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    }
+
+  
+    const appointmentUrlWithId = `/api/appointments/${id}`
+    return axios.put(appointmentUrlWithId, { interview })
+      .then(res => {
+        setState({ ...state, appointments })
+      })
+
+  }
 
   const appointmentList = 
     dailyAppointments.map((appointment) => {
@@ -51,6 +73,8 @@ export default function Application() {
           {...appointment}
           key={appointment.id}
           interview={interviewDetails}
+          interviewers={dailyInterviewers}
+          bookInterview={bookInterview}
         />
       )
     })
