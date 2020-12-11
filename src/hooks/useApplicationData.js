@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios'
 
 
@@ -31,6 +31,15 @@ export default function useApplicationData() {
     })
   }, [])
 
+
+  const getSpots = (state) => {  
+    return state.days.map( day => {
+      const spots = day.appointments.filter(appointment => !state.appointments[appointment].interview).length
+
+      return {...day, spots};
+    })
+  }
+
   const bookInterview = (id, interview) => {
     const appointment = { ...state.appointments[id] }
     const appointmentUrlWithId = `/api/appointments/${id}`
@@ -47,13 +56,15 @@ export default function useApplicationData() {
 
       return axios.delete(appointmentUrlWithId)
         .then(res => {
-          setState({ ...state, appointments })
+          setState(state => ({...state, appointments}))
+          setState(state => ({ ...state, days: getSpots(state) }))
         })
     }
 
     return axios.put(appointmentUrlWithId, { interview })
       .then(res => {
-        setState({ ...state, appointments })
+        setState(state => ({ ...state, appointments }))
+        setState(state => ({...state, days:getSpots(state)}))
       })
   }
 
