@@ -21,13 +21,13 @@ export default function Show({ student, interviewer, onEdit, onDelete }) {
             className="appointment__actions-button"
             src="images/edit.png"
             alt="Edit"
-            onClick={onEdit}
+            onClick={() => onEdit()}
           />
           <img
             className="appointment__actions-button"
             src="images/trash.png"
             alt="Delete"
-            onClick={onDelete}
+            onClick={() => onDelete()}
           />
         </section>
       </section>

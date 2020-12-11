@@ -4,14 +4,12 @@ export default function useVisualMode(initial) {
   const [modes, setModes] = useState([initial]);
 
   const transition = (mode, replace = false) => {
-    const newModes = [...modes];
-
     if (replace) {
-      newModes.pop()
-    }
+      setModes(prev => [...prev.slice(0, prev.length - 1), mode]);
 
-    newModes.push(mode);
-    setModes(newModes);
+    } else {
+      setModes(prev => [...prev, mode]);
+    }    
   }
 
   const back = () => {
@@ -19,10 +17,7 @@ export default function useVisualMode(initial) {
       return;
     }
 
-    const newModes = [...modes]
-    
-    newModes.pop()
-    setModes(newModes)
+    setModes(prev => [...prev.slice(0, prev.length - 1)]);
   }
 
   const mode = modes[modes.length - 1]
