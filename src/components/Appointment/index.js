@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "components/Appointment/styles.scss"
 
 import Header from "components/Appointment/Header";
@@ -27,6 +27,8 @@ export default function Appointment({ id, time, interview, interviewers, bookInt
     interview ? SHOW : EMPTY
   );
 
+  console.log("THE MODE NOW", mode)
+
   const save = (name, interviewer) => {
     const interview = {
       student: name, 
@@ -48,6 +50,18 @@ export default function Appointment({ id, time, interview, interviewers, bookInt
       .catch(err => transition(ERROR_DELETE, true))
   }
 
+  useEffect(() => {
+    console.log("INSIDE USE EFFECT")
+    if (mode === EMPTY && interview) {
+      transition(SHOW)
+    }
+
+    if(mode === SHOW && !interview) {
+      console.log("INSIDE USE EFFECT MODE SHOW INTERVIEW NULL")
+      transition(EMPTY)
+    }
+  }, [interview, mode, transition])
+
   return (
     <article className="appointment">
       <Header 
@@ -60,7 +74,7 @@ export default function Appointment({ id, time, interview, interviewers, bookInt
         />
       }
 
-      {mode === SHOW &&
+      {mode === SHOW && interview &&
         <Show
           student={interview.student}
           interviewer={interview.interviewer}
@@ -68,7 +82,7 @@ export default function Appointment({ id, time, interview, interviewers, bookInt
           onDelete={() => transition(CONFIRM)}
         /> 
       }
-
+      {console.log("Inside PAGE render")}
       {mode === CREATE &&
         <Form
           interviewers={interviewers}
