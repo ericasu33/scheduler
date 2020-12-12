@@ -16,6 +16,7 @@ export default function Form({ student, interviewers, interviewerId, onSave, onC
 
   const [name, setName] = useState(student || "")
   const [interviewer, setInterviewer] = useState(interviewerId || null)
+  const [error, setError] = useState("")
 
   const reset = () => {
     setName("");
@@ -25,6 +26,16 @@ export default function Form({ student, interviewers, interviewerId, onSave, onC
   const cancel = () => {
     reset();
     onCancel();
+  }
+
+  const validateAndSubmit = () => {
+    if(!name || !interviewer) {
+      
+      setError("Please input your name or choose a interviewer")
+    } else {
+      setError("")
+      onSave(name, interviewer)
+    }
   }
 
   return (
@@ -42,6 +53,8 @@ export default function Form({ student, interviewers, interviewerId, onSave, onC
             type="text"
             placeholder="Enter Student Name"
           />
+
+          {error}
         </form>
 
         <InterviewerList 
@@ -62,7 +75,7 @@ export default function Form({ student, interviewers, interviewerId, onSave, onC
 
           <Button 
             confirm
-            onClick={() => (onSave(name, interviewer))}
+            onClick={validateAndSubmit}
           >
             Save
           </Button>
