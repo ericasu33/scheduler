@@ -1,16 +1,21 @@
 import { useState } from "react";
 
-export default function useVisualMode(initial) {
+export default function useVisualMode(initial, id) {
   const [modes, setModes] = useState([initial]);
 
-  console.log("INSIDE useVisualMode")
+
+  // if(id ===17) {
+  //   console.log("INSIDE useVisualMode")
+  // }
   const transition = (mode, replace = false) => {
 
-    console.log("INSIDE TRANSITION")
     if (replace) {
       setModes(prev => [...prev.slice(0, prev.length - 1), mode]);
 
     } else {
+      if (id === 17) {
+        // console.log("INSIDE TRANSITION", mode)
+      }
       setModes(prev => [...prev, mode]);
     }    
   }
@@ -25,6 +30,11 @@ export default function useVisualMode(initial) {
 
   const mode = modes[modes.length - 1]
 
+  
+  // if(id === 17){
+  //   console.log("MODE HERE id 17", modes, mode)
+  // }
+  
   return { mode, transition, back }
 };
 

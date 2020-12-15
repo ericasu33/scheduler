@@ -27,7 +27,13 @@ export default function Appointment({ id, time, interview, interviewers, bookInt
     interview ? SHOW : EMPTY
   );
 
-  console.log("THE MODE NOW", mode)
+  // if(id === 17) {
+  //   console.log("Interview for 17", interview)
+  // }
+
+  // if(id === 17) {
+  //   console.log("Component Rerendered")
+  // }
 
   const save = (name, interviewer) => {
     const interview = {
@@ -51,19 +57,24 @@ export default function Appointment({ id, time, interview, interviewers, bookInt
   }
 
   useEffect(() => {
-    console.log("INSIDE USE EFFECT")
+    // if (id === 17) {
+    //   console.log("INSIDE USE EFFECT")
+    // }
+
     if (mode === EMPTY && interview) {
       transition(SHOW)
     }
 
     if(mode === SHOW && !interview) {
-      console.log("INSIDE USE EFFECT MODE SHOW INTERVIEW NULL")
       transition(EMPTY)
     }
   }, [interview, mode, transition])
 
   return (
-    <article className="appointment">
+    <article 
+      className="appointment"
+      data-testid="appointment"
+      >
       <Header 
         time={time}
       />
@@ -82,7 +93,7 @@ export default function Appointment({ id, time, interview, interviewers, bookInt
           onDelete={() => transition(CONFIRM)}
         /> 
       }
-      {console.log("Inside PAGE render")}
+    
       {mode === CREATE &&
         <Form
           interviewers={interviewers}

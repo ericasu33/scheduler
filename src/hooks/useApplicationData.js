@@ -68,16 +68,16 @@ export default function useApplicationData() {
     const daysUrl = "/api/days"
     const appointmentUrl = "/api/appointments"
     const interviewersUrl = "/api/interviewers"
-    const webSocket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
+    // const webSocket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
 
-    webSocket.onmessage = function(event) {
-      const interview = JSON.parse(event.data)
-      dispatch({ 
-        type: interview.type,
-        id: interview.id,
-        interview: interview.interview,
-      })
-    }
+    // webSocket.onmessage = function(event) {
+    //   const interview = JSON.parse(event.data)
+    //   dispatch({ 
+    //     type: interview.type,
+    //     id: interview.id,
+    //     interview: interview.interview,
+    //   })
+    // }
 
     Promise.all([
       axios.get(daysUrl),

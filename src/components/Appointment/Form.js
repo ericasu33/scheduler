@@ -29,13 +29,13 @@ export default function Form({ student, interviewers, interviewerId, onSave, onC
   }
 
   const validateAndSubmit = () => {
-    if(!name || !interviewer) {
-      
+    if (!name || !interviewer) {
       setError("Please input your name or choose a interviewer")
-    } else {
-      setError("")
-      onSave(name, interviewer)
-    }
+      return;
+    } 
+  
+  setError("")
+  onSave(name, interviewer)
   }
 
   return (
@@ -52,10 +52,11 @@ export default function Form({ student, interviewers, interviewerId, onSave, onC
             name="name"
             type="text"
             placeholder="Enter Student Name"
+            data-testid="student-name-input"
           />
-
-          {error}
         </form>
+
+        <section className="appointment__validation">{error}</section>
 
         <InterviewerList 
           interviewers={interviewers} 

@@ -15,6 +15,7 @@ export default function Application() {
   } = useApplicationData();
 
   const dailyInterviewers = getInterviewersForDay(state, state.day)
+  
   const dailyAppointments = getAppointmentsForDay(state, state.day);
 
   const appointmentList = 
