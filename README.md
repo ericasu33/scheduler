@@ -38,6 +38,10 @@ npm test
 npm run storybook
 ```
 
+## API-Server (Optional)
+Below is the repository to a pre-set-up server & database with mock data.
+
+https://github.com/ericasu33/scheduler-api
 ## Dependencies
 - Axios ^0.21.0
 - Classnames ^2.2.6
