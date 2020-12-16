@@ -10,8 +10,9 @@ This project is based off of this [repository](github.com/lighthouse-labs/schedu
 Deployed Website: https://scheduler-reactjs.netlify.app/
 
 ## ScreenShots
-
-
+!["Homepage"](https://github.com/ericasu33/scheduler/blob/production/docs/Interview%20Scheduler.png?raw=true)
+!["New Appointment"](https://github.com/ericasu33/scheduler/blob/production/docs/Interview%20Scheduler2.png?raw=true)
+!["Edit Appointment"](https://github.com/ericasu33/scheduler/blob/production/docs/Interview%20Scheduler3.png?raw=true)
 
 ## Setup
 ### Install dependencies
