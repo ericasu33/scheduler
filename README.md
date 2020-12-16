@@ -44,4 +44,4 @@ npm run storybook
 - Normalize.css ^8.0.1
 - React ^16.9.0
 - React-dom ^16.9.0
-- React-scripts &3.0.0 
+- React-scripts ^3.0.0 
