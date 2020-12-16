@@ -7,9 +7,6 @@ jobs:
     working_directory: ~/client
 
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "11:95:80:cb:da:57:0f:6d:47:5a:4b:ed:94:2c:b4:41"
       - checkout
       - restore_cache:
           keys:
