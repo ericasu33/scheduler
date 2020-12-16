@@ -27,14 +27,6 @@ export default function Appointment({ id, time, interview, interviewers, bookInt
     interview ? SHOW : EMPTY
   );
 
-  // if(id === 17) {
-  //   console.log("Interview for 17", interview)
-  // }
-
-  // if(id === 17) {
-  //   console.log("Component Rerendered")
-  // }
-
   const save = (name, interviewer) => {
     const interview = {
       student: name, 

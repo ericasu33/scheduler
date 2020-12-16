@@ -2,16 +2,6 @@ import React, {useState} from "react";
 import InterviewerList from "components/InterviewerList"
 import Button from "components/Button"
 
-
-//track the following state:
-//name:String, interviewer:Number
-
-//actions
-//setName, setInterviewer
-
-//props
-//name, interviewers:Arr, interviewer, onSave, onCancel
-
 export default function Form({ student, interviewers, interviewerId, onSave, onCancel}) {
 
   const [name, setName] = useState(student || "")

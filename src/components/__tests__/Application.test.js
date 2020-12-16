@@ -1,6 +1,16 @@
 import React from "react";
 
-import { render, cleanup, waitForElement, fireEvent, prettyDOM, getByText, getByTestId, getAllByTestId, getByAltText, getByPlaceholderText, queryByText } from "@testing-library/react";
+import { 
+  render, 
+  cleanup, 
+  waitForElement, 
+  fireEvent, 
+  getByText, 
+  getByTestId, 
+  getAllByTestId, 
+  getByAltText, 
+  getByPlaceholderText, 
+  queryByText } from "@testing-library/react";
 
 import Application from "components/Application";
 import axios from "axios"
@@ -9,10 +19,7 @@ afterEach(cleanup);
 
 describe("Application", () => {
   it("dafaults to Monday and changes the schedule when a new day is selected", async () => {
-    const { getByText, container } = render(<Application />);
-
-    // return waitForElement(() => getByText("Monday")).then(() => {
-    //   fireEvent.click(getByText("Tuesday"));
+    const { getByText } = render(<Application />);
 
     await waitForElement(() => getByText("Monday"))
 

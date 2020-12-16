@@ -25,7 +25,7 @@ describe("Form", () => {
     const { getByTestId } = render(
       <Form interviewers={interviewers} student="Lydia Miller-Jones" />
     );
-    // console.log(getByTestId("student-name-input"));
+    
     expect(getByTestId("student-name-input")).toHaveValue("Lydia Miller-Jones");
   });
 
