@@ -79,24 +79,14 @@ export default {
     }
   }),
 
-  put: jest.fn(url => { //interview === all the stuff we did in test.js?
-    if (url === `/api/appointments/1`) {
+  put: jest.fn(url => { 
     return Promise.resolve({
       status: 204,
       statusText: "No Content",
     })
-   }
-
-    if (url === `/api/appointments/2`) {
-      return Promise.resolve({
-        status: 204,
-        statusText: "No Content",
-      })
-    }
   }),
 
   delete: jest.fn(url => {
-    if (url === '/api/appointments/2')
     return Promise.resolve({
       status: 204,
       statusText: "No Content",

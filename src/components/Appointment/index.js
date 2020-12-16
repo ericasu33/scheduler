@@ -57,10 +57,6 @@ export default function Appointment({ id, time, interview, interviewers, bookInt
   }
 
   useEffect(() => {
-    // if (id === 17) {
-    //   console.log("INSIDE USE EFFECT")
-    // }
-
     if (mode === EMPTY && interview) {
       transition(SHOW)
     }
