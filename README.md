@@ -1,5 +1,5 @@
 # Interview Scheduler
-This is a simple SPA application called interview scheduler built by using the React view library.
+This is a SPA application called interview scheduler built with React.
 
 Storybook, React testing library, Jest, and Cypress are used through the development of the project.
 
