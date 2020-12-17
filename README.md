@@ -7,7 +7,14 @@ Web Socket server is also set up for this project.
 
 This project is based off of this [repository](github.com/lighthouse-labs/scheduler)
 
-Deployed Website: https://scheduler-reactjs.netlify.app/
+
+Related Project
+- [Interview Scheduler Dashboard](https://github.com/ericasu33/scheduler-dashboard
+)
+
+Deployed Website 
+- [Interview Scheduler](http://scheduler-reactjs.netlify.com/)
+- [Interview Scheduler Dashboard](https://scheduler-dashboard-reactjs.netlify.app/)
 
 ## ScreenShots
 !["Homepage"](https://github.com/ericasu33/scheduler/blob/production/docs/Interview%20Scheduler.png?raw=true)
