@@ -23,16 +23,6 @@ export default function useApplicationData() {
     const daysUrl = "/api/days"
     const appointmentUrl = "/api/appointments"
     const interviewersUrl = "/api/interviewers"
-    const webSocket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
-
-    webSocket.onmessage = function(event) {
-      const interview = JSON.parse(event.data)
-      dispatch({ 
-        type: interview.type,
-        id: interview.id,
-        interview: interview.interview,
-      })
-    }
 
     Promise.all([
       axios.get(daysUrl),
@@ -47,6 +37,25 @@ export default function useApplicationData() {
       })
     })
   }, [])
+
+  useEffect(() => {
+    const webSocket = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
+
+    webSocket.onmessage = function (event) {
+    const interview = JSON.parse(event.data)
+
+      if (typeof interview === "object" && interview.type === "SET_INTERVIEW")
+      dispatch({
+        type: interview.type,
+        id: interview.id,
+        interview: interview.interview,
+      })
+    }
+
+    return () => {
+      webSocket.close();
+    }
+  }, [dispatch])
 
   const bookInterview = (id, interview) => {
     const appointmentUrlWithId = `/api/appointments/${id}`
